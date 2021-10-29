@@ -44,7 +44,11 @@ class Form extends Component {
   render() {
     return (
       <div className="form-container">
-        <form className="feedback-form" onSubmit={() => this.displayFeedback()}>
+        <form
+          action="#"
+          className="feedback-form"
+          onSubmit={() => this.displayFeedback()}
+        >
           <div>
             <label htmlFor="emp-name">Name</label>
             <input type="text" id="emp-name" required></input>
@@ -58,7 +62,7 @@ class Form extends Component {
             <input type="text" id="emp-Rating" required></input>
           </div>
           <div>
-            <button>Submit</button>
+            <button type="submit">Submit</button>
           </div>
           <div>
             <hr />
