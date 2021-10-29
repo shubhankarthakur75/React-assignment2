@@ -58,7 +58,7 @@ class Form extends Component {
             <input type="text" id="emp-Rating" required></input>
           </div>
           <div>
-            <button onClick={() => this.displayFeedback()}>Submit</button>
+            <button onSubmit={() => this.displayFeedback()}>Submit</button>
           </div>
           <div>
             <hr />
