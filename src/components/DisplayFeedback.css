@@ -1,0 +1,11 @@
+.feedbacks-container {
+  background-color: rgb(143, 163, 184);
+  min-height: 100px;
+  width: 80%;
+  margin: 50px auto;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

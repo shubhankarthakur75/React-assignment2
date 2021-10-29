@@ -1,0 +1,9 @@
+.feedback-box {
+  margin: 20px;
+  padding: 20px 10px 10px 10px;
+  width: 500px;
+  min-height: 50px;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  background-color: darkturquoise;
+}
