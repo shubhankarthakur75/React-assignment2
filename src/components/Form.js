@@ -27,7 +27,8 @@ class Form extends Component {
     rating: [],
   };
 
-  displayFeedback = () => {
+  displayFeedback = (event) => {
+    event.preventDefault();
     let d = new Date();
     let empName = document.getElementById("emp-name").value;
     let empDepartment = document.getElementById("emp-department").value;
@@ -44,11 +45,7 @@ class Form extends Component {
   render() {
     return (
       <div className="form-container">
-        <form
-          action="#"
-          className="feedback-form"
-          onSubmit={() => this.displayFeedback()}
-        >
+        <form className="feedback-form" onSubmit={this.displayFeedback}>
           <div>
             <label htmlFor="emp-name">Name</label>
             <input type="text" id="emp-name" required></input>
