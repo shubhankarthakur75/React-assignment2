@@ -45,7 +45,16 @@ class Form extends Component {
   render() {
     return (
       <div className="form-container">
-        <form className="feedback-form" onSubmit={this.displayFeedback}>
+        <form
+          className="feedback-form"
+          onSubmit={(e) => this.displayFeedback(e)}
+
+          // className="feedback-form"
+          // onSubmit={this.displayFeedback}
+
+          // className="feedback-form"
+          // onSubmit={() => this.displayFeedback()};
+        >
           <div>
             <label htmlFor="emp-name">Name</label>
             <input type="text" id="emp-name" required></input>
