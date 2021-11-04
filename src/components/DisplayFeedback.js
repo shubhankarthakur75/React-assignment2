@@ -7,22 +7,16 @@ class DisplayFeedback extends Component {
     return (
       <>
         <div className="feedbacks-container">
-          {this.props.nameArray.map((item, index) => {
+          {this.props.propsEmployeeArray.map((item, index) => {
             return (
               <Feedback
-                name={this.props.nameArray[index]}
-                key={index}
-                department={this.props.departmentArray[index]}
-                rating={this.props.ratingArray[index]}
+                key={item.id}
+                name={item.name}
+                department={item.department}
+                rating={item.rating}
               />
             );
           })}
-
-          {/* <Feedback
-          name={this.props.name}
-          department={this.props.department}
-          rating={this.props.rating}
-        /> */}
         </div>
       </>
     );

@@ -3,69 +3,73 @@ import "./Form.css";
 import DisplayFeedback from "./DisplayFeedback";
 
 class Form extends Component {
-  // state = {
-  //   name: null,
-  //   department: null,
-  //   rating: null,
-  // };
-
-  // displayFeedback = () => {
-  //   let empName = document.getElementById("emp-name").value;
-  //   let empDepartment = document.getElementById("emp-department").value;
-  //   let empRating = document.getElementById("emp-Rating").value;
-  //   this.setState({
-  //     name: empName,
-  //     department: empDepartment,
-  //     rating: empRating,
-  //   });
-  // };
-
   state = {
-    id: null,
-    name: [],
-    department: [],
-    rating: [],
+    employeeArray: [],
+    id: "",
+    name: "",
+    department: "",
+    rating: "",
   };
 
-  displayFeedback = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     let d = new Date();
-    let empName = document.getElementById("emp-name").value;
-    let empDepartment = document.getElementById("emp-department").value;
-    let empRating = document.getElementById("emp-Rating").value;
-    this.setState({ id: d.getTime() });
-    this.state.name.push(empName);
-    this.state.department.push(empDepartment);
-    this.state.rating.push(empRating);
-    document.getElementById("emp-name").value = "";
-    document.getElementById("emp-department").value = "";
-    document.getElementById("emp-Rating").value = "";
+    const tempObj = {
+      id: d.getTime(),
+      name: this.state.name,
+      department: this.state.department,
+      rating: this.state.rating,
+    };
+
+    const tempEmployeeArray = [...this.state.employeeArray];
+    tempEmployeeArray.push(tempObj);
+    this.setState({ employeeArray: tempEmployeeArray }, () =>
+      console.log(this.state)
+    );
+
+    this.state.id = "";
+    this.state.name = "";
+    this.state.department = "";
+    this.state.rating = "";
+  };
+
+  handleChange = (event) => {
+    this.setState({ [event.target.id]: event.target.value });
   };
 
   render() {
     return (
       <div className="form-container">
-        <form
-          className="feedback-form"
-          onSubmit={(e) => this.displayFeedback(e)}
-
-          // className="feedback-form"
-          // onSubmit={this.displayFeedback}
-
-          // className="feedback-form"
-          // onSubmit={() => this.displayFeedback()};
-        >
+        <form className="feedback-form" onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <label htmlFor="emp-name">Name</label>
-            <input type="text" id="emp-name" required></input>
+            <input
+              type="text"
+              id="name"
+              value={this.state.name} /////////Doubt
+              onChange={(e) => this.handleChange(e)}
+              required
+            ></input>
           </div>
           <div>
             <label htmlFor="emp-department">Department</label>
-            <input type="text" id="emp-department" required></input>
+            <input
+              type="text"
+              id="department"
+              value={this.state.department}
+              onChange={(e) => this.handleChange(e)}
+              required
+            ></input>
           </div>
           <div>
             <label htmlFor="emp-Rating">Rating</label>
-            <input type="text" id="emp-Rating" required></input>
+            <input
+              type="text"
+              id="rating"
+              value={this.state.rating} /////////Doubt
+              onChange={(e) => this.handleChange(e)}
+              required
+            ></input>
           </div>
           <div>
             <button type="submit">Submit</button>
@@ -75,21 +79,9 @@ class Form extends Component {
           </div>
         </form>
 
-        {this.state.name.length !== 0 ? (
-          <DisplayFeedback
-            nameArray={this.state.name}
-            departmentArray={this.state.department}
-            ratingArray={this.state.rating}
-          />
+        {this.state.employeeArray.length !== 0 ? (
+          <DisplayFeedback propsEmployeeArray={this.state.employeeArray} />
         ) : null}
-
-        {/* {if(this.state.name.length!=0){    //Doubt
-             <DisplayFeedback
-              nameArray={this.state.name}
-            departmentArray={this.state.department}
-            ratingArray={this.state.rating}
-           />
-        }}; */}
       </div>
     );
   }
