@@ -27,10 +27,7 @@ class Form extends Component {
       console.log(this.state)
     );
 
-    this.state.id = "";
-    this.state.name = "";
-    this.state.department = "";
-    this.state.rating = "";
+    this.setState({ id: "", name: "", department: "", rating: "" });
   };
 
   handleChange = (event) => {
